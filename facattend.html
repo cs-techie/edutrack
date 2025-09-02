@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduTrack - Faculty Dashboard for updating assignments, attendance, and results.">
+    <title>Faculty Dashboard - EduTrack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="facatt.css">
+    <script defer src="facatt.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90">
+            </div>
+            <ul class="items">
+                <li><a href="facass.html">Assignments</a></li>
+                <li><a href="facattend.html" target="_blank">Attendance</a></li>
+                <li><a href="facres.html">Results</a></li>
+            </ul>
+            <div class="profile-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="Profile Icon" width="50" height="50">
+                <div class="profile-dropdown">
+                    <!--<p><strong>Profile</strong></p>!-->
+                    <p><a href="#profile-settings">Profile</a></p>
+                    <p><a href="#rank-settings">Rank</a></p>
+                    <p><a href="#privacy-settings">Privacy</a></p>
+                    <p><a href="#settings">Settings</a></p>
+                    <p><strong><a href="#logout">Logout</a></strong></p>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+
+      <h1> Attendance Section</h1> 
+        <section id="attendance" class="dashboard-section">
+            <h2>Attendance</h2>
+            <form id="attendanceForm">
+                <label for="studentName">Student Name:</label>
+                <input type="text" id="studentName" required>
+                <label for="attendanceStatus">Status:</label>
+                <select id="attendanceStatus" required>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+                <button type="submit">Mark Attendance</button>
+            </form>
+            <div class="content-box">
+                <h3>Attendance Records</h3>
+                <ul id="attendanceList"></ul>
+            </div>
+        </section>
+      <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    // Array to hold the attendance records
+    let attendanceRecords = [];
+
+    // Handle the form submission for marking attendance
+    const attendanceForm = document.getElementById('attendanceForm');
+    const attendanceList = document.getElementById('attendanceList');
+
+    attendanceForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent page reload on form submission
+
+        // Get values from the form
+        const studentName = document.getElementById('studentName').value;
+        const attendanceStatus = document.getElementById('attendanceStatus').value;
+
+        // Create a new attendance record object
+        const newRecord = { studentName, attendanceStatus };
+
+        // Add the new record to the attendance array
+        attendanceRecords.push(newRecord);
+
+        // Clear the form
+        attendanceForm.reset();
+
+        // Display the updated attendance records
+        updateAttendanceList();
+    });
+
+    // Function to display the attendance records
+    function updateAttendanceList() {
+        // Clear the existing list
+        attendanceList.innerHTML = '';
+
+        // Loop through the attendance records and create list items
+        attendanceRecords.forEach((record, index) => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('attendance-item');
+            listItem.innerHTML = `
+                <strong>${record.studentName}</strong>: ${record.attendanceStatus}
+                <button class="view-details" data-index="${index}">View Details</button>
+                <div class="attendance-details" id="details-${index}" style="display:none;">
+                    <p><strong>Student Name:</strong> ${record.studentName}</p>
+                    <p><strong>Status:</strong> ${record.attendanceStatus}</p>
+                </div>
+            `;
+
+            // Add the list item to the attendance list
+            attendanceList.appendChild(listItem);
+
+            // Add event listener to toggle visibility of details
+            const toggleButton = listItem.querySelector('.view-details');
+            toggleButton.addEventListener('click', (e) => {
+                const index = e.target.getAttribute('data-index');
+                const details = document.getElementById(`details-${index}`);
+                if (details.style.display === "none") {
+                    details.style.display = "block";
+                } else {
+                    details.style.display = "none";
+                }
+            });
+        });
+    }
+
+    // Function to retrieve and log the attendance records (for other uses)
+    function getAttendanceRecords() {
+        return attendanceRecords; // Returns the attendance records array
+    }
+
+    // Example usage: Log the current attendance records to the console
+    console.log(getAttendanceRecords());
+});
+      </script>
+
+
+        
+    </main>
+</body>
+</html>

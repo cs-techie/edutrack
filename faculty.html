@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Faculty Assignment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90">
+            </div>
+            <ul class="items">
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="services.html" target="_blank">Services</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="assignment-section">
+        <h1>Assignments Section</h1>
+        <form id="assignmentForm" enctype="multipart/form-data">
+            <label for="assignmentTitle">Title:</label>
+            <input type="text" id="assignmentTitle" required>
+            <label for="assignmentDescription">Description:</label>
+            <textarea id="assignmentDescription" required></textarea>
+            <label for="assignmentFile">Attach PDF:</label>
+            <input type="file" id="assignmentFile" accept=".pdf" required>
+            <button type="submit" onclick="submitAssignment()">Add Assignment</button>
+        </form>
+        <div class="content-box">
+            <h3>Assignment List</h3>
+            <ul id="assignmentList"></ul>
+        </div>
+    </section>
+
+    <script>
+        function submitAssignment(event) {
+            event.preventDefault();
+
+            const formData = new FormData(document.getElementById('assignmentForm'));
+            
+            // Send file to backend (PHP)
+            fetch('uploadAssignment.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('File uploaded successfully');
+                } else {
+                    alert('File upload failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Quiz and Assignment</title>
+    <link rel="stylesheet" href="facass.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90">
+            </div>
+            <ul class="items">
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="services.html" target="_blank">Services</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="button-container">
+        <button class="toggle-btn" onclick="showSection('assignment-section')">Assignment</button>
+        <button class="toggle-btn" onclick="showSection('quiz-section')">Quiz</button>
+    </div>
+
+    <section id="assignment-section" style="display: none;">
+        <h1>Assignments Section</h1>
+        <form id="assignmentForm">
+            <label for="assignmentTitle">Title:</label>
+            <input type="text" id="assignmentTitle" required>
+            <label for="assignmentDescription">Description:</label>
+            <textarea id="assignmentDescription" required></textarea>
+              <label for="assignmentFile">Attach PDF:</label>
+            <input type="file" id="assignmentFile" accept=".pdf" required>
+            <button type="submit">Add Assignment</button>
+        </form>
+        <div class="content-box">
+            <h3>Assignment List</h3>
+            <ul id="assignmentList"></ul>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz-section" style="display: none;">
+        <div class="button-container2">
+            <button onclick="openAddQuestion()">Add Question</button>
+            <button onclick="openEditQuestions()">Edit Questions</button>
+        </div>
+
+        <!-- Add Question Section -->
+        <div id="addSection" class="hidden-section">
+            <h2>Add Question</h2>
+            <!-- Form elements for adding questions -->
+            <label for="addSubject">Subject:</label>
+            <select id="addSubject">
+                <option value="c">C</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="cplusplus">C++</option>
+            </select>
+            <label for="addQuestion">Question:</label>
+            <textarea id="addQuestion"></textarea>
+            <label>Choices:</label>
+            <input type="text" id="addChoice1" class="choice-input" placeholder="Choice 1">
+            <input type="text" id="addChoice2" class="choice-input" placeholder="Choice 2">
+            <input type="text" id="addChoice3" class="choice-input" placeholder="Choice 3">
+            <input type="text" id="addChoice4" class="choice-input" placeholder="Choice 4">
+            <label for="addAnswerKey">Correct Answer:</label>
+            <select id="addAnswerKey">
+                <option value="">Select Answer</option>
+                <option value="1">Choice 1</option>
+                <option value="2">Choice 2</option>
+                <option value="3">Choice 3</option>
+                <option value="4">Choice 4</option>
+            </select>
+            <div class="button-row">
+                <button onclick="closeSection()">Close</button>
+                <button onclick="nextQuestion()">Next</button>
+                <button id="prevButton" onclick="prevQuestion()" style="display: none;">Prev</button>
+            </div>
+            <br>
+            <button class="submit-button" onclick="submitQuiz('add')">Submit</button>
+        </div>
+
+        <!-- Edit Question Section -->
+        <div id="editSection" class="hidden-section">
+            <h2>Edit Questions</h2>
+            <label for="editSubject">Subject:</label>
+            <select id="editSubject" onchange="loadQuestions()">
+                <option value="c">C</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="cplusplus">C++</option>
+            </select>
+            <!-- Form elements for editing questions -->
+            <div class="button-row">
+                <button onclick="closeSection()">Close</button>
+                <button id="prevEditButton" onclick="prevQuestion(true)" style="display: none;">Prev</button>
+            </div>
+            <br>
+            <button class="submit-button" onclick="submitQuiz('edit')">Submit</button>
+        </div>
+    </section>
+
+    <script src="facass.css"></script>
+    <script>
+        // Function to show the selected section
+        function showSection(sectionId) {
+            document.getElementById('assignment-section').style.display = sectionId === 'assignment-section' ? 'block' : 'none';
+            document.getElementById('quiz-section').style.display = sectionId === 'quiz-section' ? 'block' : 'none';
+        }
+
+        // Functions to toggle between Add and Edit sections within Quiz
+        function openAddQuestion() {
+            document.getElementById('addSection').style.display = 'block';
+            document.getElementById('editSection').style.display = 'none';
+        }
+
+        function openEditQuestions() {
+            document.getElementById('editSection').style.display = 'block';
+            document.getElementById('addSection').style.display = 'none';
+        }
+
+        // Function to close both Add and Edit sections
+        function closeSection() {
+            document.getElementById('addSection').style.display = 'none';
+            document.getElementById('editSection').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

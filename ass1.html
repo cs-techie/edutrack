@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Quiz and Assignment</title>
+    <link rel="stylesheet" href="ass2.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90">
+            </div>
+            <ul class="items">
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="services.html" target="_blank">Services</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="button-container">
+        <button class="toggle-btn" onclick="showSection('assignment-section')">Assignment</button>
+        <button class="toggle-btn" onclick="showSection('quiz-section')">Quiz</button>
+    </div>
+
+    <section id="assignment-section" style="display: none;">
+      <div id="as1" class="input">
+            <label id="sub" for="Subject">SUBJECT:</label>
+            <select name="Subject" id="subject">
+            <option value="C">C</option>
+            <option value="python">Python</option>
+            <option value="Java">Java</option>
+            <option value="Html">Html</option>
+            </select>
+      </div>
+        <h2>Assignment</h2>
+        <div class="assignment-container">
+            <img src="https://via.placeholder.com/300" alt="Assignment Image" class="assignment-image" onclick="enlargeImage(this.src)">
+        </div>
+            <textarea rows="5" cols="40" placeholder="Write your assignment here..."></textarea>
+            <div class="upload-section">
+                <input type="file" id="fileUpload">
+                <label for="fileUpload">Upload from device</label>
+            </div>
+            <button class="submit-btn" onclick="submitAssignment()">Submit Assignment</button>
+            <button class="close-btn" onclick="closeSection('assignment-section')">Close</button>
+    </section>
+
+    <!-- Fullscreen Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Quiz Section -->
+    <section id="quiz-section" style="display: none;">
+      <div id="as1" class="input">
+            <label id="sub" for="Subject">SUBJECT:</label>
+            <select name="Subject" id="subject">
+            <option value="C">C</option>
+            <option value="python">Python</option>
+            <option value="Java">Java</option>
+            <option value="Html">Html</option>
+            </select>
+      </div>
+        <h2>Quiz</h2>
+        <div id="quiz-questions" class="quiz-container"></div>
+        <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+
+        <!-- Scoreboard Display -->
+        <div id="scoreboard" class="scoreboard" style="display: none;">
+            <h3>Scoreboard</h3>
+            <p>Total Questions: <span id="total-questions"></span></p>
+            <p>Attempted: <span id="attempted-questions"></span></p>
+            <p>Not Attempted: <span id="not-attempted-questions"></span></p>
+            <p>Correct: <span id="correct-answers"></span></p>
+            <p>Incorrect: <span id="incorrect-answers"></span></p>
+            <p>Score: <span id="score"></span></p>
+        </div>
+        <button class="close-btn" onclick="closeSection('quiz-section')">Close</button>
+    </section>
+
+    <script src="ass1.js"></script>
+</body>
+</html>

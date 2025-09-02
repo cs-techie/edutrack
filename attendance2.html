@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance</title>
+    <link rel="stylesheet" href="attendance2.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <div class="logo">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s"
+            alt="EduTrack Logo"
+            width="90"
+            height="90"
+          />
+        </div>
+        <ul class="items">
+          <li><a href="fhomepage.html">Academics</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+        <div class="profile-icon">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png"
+            alt="Profile Icon"
+            width="50"
+            height="50"
+          />
+          <div class="profile-dropdown">
+            <p><strong>Profile</strong></p>
+            <p><a href="#profile-settings">Profile</a></p>
+            <p><a href="#rank-settings">Rank</a></p>
+            <p><a href="#privacy-settings">Privacy</a></p>
+            <p><a href="#settings">Settings</a></p>
+            <p>
+              <strong><a href="#logout">Logout</a></strong>
+            </p>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Notification -->
+    <div class="notification-scrolling">
+      <marquee
+        >This is a scrolling notification! Stay tuned for updates.</marquee
+      >
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <div class="tiles">
+        <div class="tile" style="background-color: blueviolet" id="attendance">
+          Attendance Detail
+        </div>
+        <a href="sresult2.php">
+        <div class="tile" style="background-color: #34495e">
+          Sessional Marks
+        </div>
+        </a>
+        <a href="fsschedules.html">
+        <div class="tile" style="background-color: #e74c3c">
+          View Time Table
+        </div>
+        </a>
+        <a href="resume.html">
+        <div class="tile" style="background-color: #f39c12"> Student Resume</div></a>
+      </div>
+
+      <!-- Information Section 
+    <div class="info-section">
+      <div class="schedule">
+        <h3>Schedule for Today</h3>
+        <ul>
+          <li>9:30 - 10:20: Data Structures</li>
+          <li>10:30 - 11:20: Linear Algebra</li>
+          <li>11:30 - 12:20: Programming Lab</li>
+        </ul>
+      </div>
+      <div class="alerts">
+        <h3>Alerts</h3>
+        <p>Your class scheduled at 10:20 for R21-DATA STRUCTURES AND ALGORITHMS USING 'C'.</p>
+      </div>
+    </div>
+  </div>
+
+   Modal for Attendance Details -->
+      <div id="attendanceModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Attendance Details</h2>
+          <p>Subject: Data Structures - 85%</p>
+          <p>Subject: Linear Algebra - 92%</p>
+          <p>Subject: Programming Lab - 90%</p>
+          <!-- Add more attendance details as needed -->
+        </div>
+      </div>
+    </div>
+    <br /><br /><br />
+    <footer class="footer">
+      <p>Supported by edutrack.com</p>
+    </footer>
+    <script src="attendance2.js"></script>
+  </body>
+</html>

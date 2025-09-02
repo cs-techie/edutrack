@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Faculty Dashboard - Manage Schedules">
+    <meta name="keywords" content="schedules, faculty, education">
+    <title>Faculty Dashboard - Schedules</title>
+    <style>
+      header
+      {
+      background-color: skyblue; /* Blue background for header */
+      color: white;
+      padding: 10px 20px;
+    }
+
+  nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+  }
+
+  .logo img {
+      width: 90px;
+  }
+
+  .items {
+      list-style: none;
+      display: flex;
+  }
+
+  .items li {
+      margin: 0 25px;
+  }
+
+  .items a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+  }
+
+  .items a:hover {
+      color: #e2e6ea; /* Lighter color on hover */
+  }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .schedule-section {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-section h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .schedule-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .schedule-form input {
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .schedule-form button {
+            padding: 10px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .schedule-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .schedule-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .schedule-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .schedule-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+  <header>
+        <nav>
+            <div class="logo">
+              <a href="fhomepage.html">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90"></a>
+            </div>
+            <ul class="items">
+                <li><a href="fhomepage.php">Academics</a></li>
+                <li><a href="services.html" target="_blank">Services</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="schedules" class="schedule-section">
+        <h2>Class Schedules</h2>
+
+        <!-- Form to add new schedules -->
+        <div class="schedule-form">
+            <input type="text" id="schedule-teacher" placeholder="Enter Teacher's Name" required>
+            <input type="text" id="schedule-date" placeholder="Enter date (e.g., 2024-11-05)" required>
+            <input type="text" id="schedule-time" placeholder="Enter time (e.g., 10:00 AM)" required>
+            <input type="text" id="schedule-details" placeholder="Enter class details" required>
+            <button onclick="addSchedule()">Add Schedule</button>
+        </div>
+
+        <!-- Display schedules -->
+        <ul id="schedule-list" class="schedule-list">
+            <!-- Schedules will be added here -->
+        </ul>
+    </section>
+
+    <script>
+    // Function to add a new schedule
+    function addSchedule() {
+        const teacher = document.getElementById('schedule-teacher').value;
+        const date = document.getElementById('schedule-date').value;
+        const time = document.getElementById('schedule-time').value;
+        const details = document.getElementById('schedule-details').value;
+
+        if (teacher && date && time && details) {
+            const schedule = {
+                teacher,
+                date,
+                time,
+                details,
+                timestamp: Date.now() // Add a timestamp in milliseconds
+            };
+
+            const schedules = JSON.parse(localStorage.getItem('schedules')) || [];
+            schedules.push(schedule);
+            localStorage.setItem('schedules', JSON.stringify(schedules));
+
+            displaySchedules(schedules);
+
+            document.getElementById('schedule-teacher').value = '';
+            document.getElementById('schedule-date').value = '';
+            document.getElementById('schedule-time').value = '';
+            document.getElementById('schedule-details').value = '';
+        } else {
+            alert("Please fill in all fields before adding the schedule.");
+        }
+    }
+
+    // Function to display schedules
+    function displaySchedules(schedules) {
+        const scheduleList = document.getElementById('schedule-list');
+        scheduleList.innerHTML = '';
+        schedules.forEach(schedule => {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>${schedule.teacher}</strong> - <strong>${schedule.date} - ${schedule.time}</strong>: ${schedule.details}`;
+            scheduleList.appendChild(li);
+        });
+    }
+
+    // Function to clear schedules older than 24 hours (86400000 milliseconds)
+    function clearOldSchedules() {
+        const schedules = JSON.parse(localStorage.getItem('schedules')) || [];
+        const currentTime = Date.now();
+        const updatedSchedules = schedules.filter(schedule => (currentTime - schedule.timestamp) < 86400000);
+
+        localStorage.setItem('schedules', JSON.stringify(updatedSchedules));
+        displaySchedules(updatedSchedules);
+    }
+
+    // Load and clear old schedules on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        clearOldSchedules();
+        loadSchedules();
+    });
+
+    // Function to load schedules from localStorage and display them
+    function loadSchedules() {
+        const schedules = JSON.parse(localStorage.getItem('schedules')) || [];
+        displaySchedules(schedules);
+    }
+</script>
+
+</body>
+</html>

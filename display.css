@@ -1,0 +1,522 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.upload-section, .display-section {
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin: 20px auto;
+}
+
+.upload-section h1, .display-section h1 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#uploadForm input, .upload-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.upload-btn {
+    background-color: #1c8adb;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.upload-btn:hover {
+    background-color: #155a8a;
+}
+.cert-image {
+    max-width: 200px; /* Set a maximum width */
+    max-height: 150px; /* Set a maximum height */
+    width: 50%;
+    height: 50%;
+    margin-top: 10px;
+    border-radius: 5px; /* Optional: Adds rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds a shadow for a polished look */
+}
+
+
+.certificates-list {
+    margin-top: 20px;
+}
+
+.certificate-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.delete-btn {
+    padding: 8px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+  
+  /* Header styles */
+  header {
+    background-color: skyblue; /* Blue background for header */
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 90px;
+  }
+  
+  .items {
+    list-style: none;
+    display: flex;
+  }
+  
+  .items li {
+    margin: 0 25px;
+  }
+  
+  .items a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .items a:hover {
+    color: #e2e6ea; /* Lighter color on hover */
+  }
+  
+  /* Profile icon styles */
+  .profile-icon {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  /* .profile-dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: black;
+    min-width: 150px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  } */
+  
+  .profile-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    color: #333;
+    min-width: 180px;
+    max-width: 250px; /* Set max-width to prevent it from overflowing */
+    padding: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    right: 0; /* Align dropdown to the right if it's close to the edge */
+  }
+  
+  /* Item styling */
+  .profile-dropdown p, .profile-dropdown a {
+    display: block;
+    padding: 10px 16px;
+    margin: 4px 0;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for items */
+  .profile-dropdown p:hover, .profile-dropdown a:hover {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  
+  .profile-icon:hover .profile-dropdown {
+    display: block; /* Show dropdown on hover */
+  }
+  /* Centering and styling buttons */
+  .sem {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .submit-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049;
+  }
+  /* Centering the button container on the page 
+  body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: beige; Light background 
+    margin: 0;*/
+  
+  
+  .sem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Styling the buttons with width, height, and hover effect */
+  .submit-btn {
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  .sem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Styling the buttons with width, height, and hover effect */
+  .submit-btn {
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  
+  
+  .button-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    align-content: center;
+  }
+  
+  .submit-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .table-container, .link-container {
+    display: none; /* Hide containers by default */
+    background-color: white;
+    padding-left: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    width: 70%S;
+  }
+  /* Adjust table width */
+  table {
+    width: 80%; /* Set the table to occupy 80% of its container's width */
+    border-collapse: collapse;
+    margin-top: 10px;
+  }/* Adjust the width of the marks table */
+  /* Adjust the width of the table container to decrease its width */
+  .table-container {
+    width: 50%; /* Decrease the width of the container */
+    background-color: white; /* Set the background color to white */
+    padding: 20px;
+    margin: 20px auto; /* Center the container horizontally */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  /* Adjust the width of the marks table */
+  #marks-table {
+    width: 100%; /* Ensure the table takes up 100% of its container's width */
+    border-collapse: collapse;
+  }
+  
+  /* Increased padding for cells in the table */
+  th, td {
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  /* Set specific widths for Subject and Marks columns */
+  th:first-child, td:first-child { /* Subject column */
+    width: 70%; /* 70% width for the Subject column */
+  }
+  
+  th:last-child, td:last-child { /* Marks column */
+    width: 30%; /* 30% width for the Marks column */
+  }
+  
+  
+  .close-btn {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  
+  .table-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  h2 {
+    color: #333;
+    text-align: center;
+    padding-top: 10px;
+  }
+  
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  td {
+    background-color: #f2f2f2;
+  }
+  
+  .submit-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px;
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049;
+  }
+  thead.hidden {
+    display: none;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h3 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .close-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .close-btn:hover {
+    background-color: darkred;
+  }
+  
+  .button-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;        /* Adds top margin to give space from the header */
+    margin-bottom: 20px;
+  }
+  
+  
+  .button-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .submit-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .link-container {
+    display: none; /* Hide by default */
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .link-container h3 {
+    margin-top: 0;
+  }
+  
+  .link-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .link-container li {
+    margin: 10px 0;
+  }
+      
+
+
+
+.button-section {
+  margin: 20px;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  display: block;
+  margin-top: 10px auto;
+}
+
+#marks-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#marks-table th, #marks-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.close-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.link-container {
+  padding: 20px;
+}
+
+.link-container a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.link-container a:hover {
+  text-decoration: underline;
+}
+
+#marks-table, .link-container {
+  margin-top: 20px;
+}
+
+  .button-section a{
+    text-decoration: none;
+    color: white;
+  }

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduTrack - Faculty Dashboard for updating assignments, attendance, and results.">
+    <title>Faculty Dashboard - EduTrack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="facatt.css">
+    <script defer src="faculty.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90">
+            </div>
+            <ul class="items">
+                <li><a href="facass.html">Assignments</a></li>
+                <li><a href="facattend.html" target="_blank">Attendance</a></li>
+                <li><a href="facres.html">Results</a></li>
+            </ul>
+            <div class="profile-icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="Profile Icon" width="50" height="50">
+                <div class="profile-dropdown">
+                    <!--<p><strong>Profile</strong></p>!-->
+                    <p><a href="#profile-settings">Profile</a></p>
+                    <p><a href="#rank-settings">Rank</a></p>
+                    <p><a href="#privacy-settings">Privacy</a></p>
+                    <p><a href="#settings">Settings</a></p>
+                    <p><strong><a href="#logout">Logout</a></strong></p>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+
+
+        <h1> Results Section</h1> 
+        <section id="results" class="dashboard-section">
+            <h2>Results</h2>
+            <form id="resultForm">
+                <label for="studentNameResult">Student Name:</label>
+                <input type="text" id="studentNameResult" required>
+                <label for="grade">Grade:</label>
+                <input type="text" id="grade" required>
+                <button type="submit">Update Results</button>
+            </form>
+            <div class="content-box">
+                <h3>Results List</h3>
+                <ul id="resultList"></ul>
+            </div>
+        </section>
+      <script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Array to hold the result records
+    let results = [];
+
+    // Get the form and list elements
+    const resultForm = document.getElementById('resultForm');
+    const resultList = document.getElementById('resultList');
+
+    // Handle the form submission for updating results
+    resultForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the page from reloading on form submission
+
+        // Get values from the form
+        const studentName = document.getElementById('studentNameResult').value;
+        const grade = document.getElementById('grade').value;
+
+        // Create a new result record object
+        const newResult = { studentName, grade };
+
+        // Add the new result to the results array
+        results.push(newResult);
+
+        // Clear the form
+        resultForm.reset();
+
+        // Automatically update the result list after adding the new result
+        updateResultList();
+    });
+
+    // Function to update the results list
+    function updateResultList() {
+        // Clear the current list
+        resultList.innerHTML = '';
+
+        // Loop through results and add them to the list
+        results.forEach((result) => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('result-item');
+            listItem.innerHTML = `
+                <strong>${result.studentName}</strong>: ${result.grade}
+            `;
+            resultList.appendChild(listItem);
+        });
+    }
+});
+
+      </script>
+    </main>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN-PAGE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="loginpage.css">
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90">
+            </div>
+            <b><h1>EDU <i class="fa-solid fa-book-open-reader"></i> TRACK</h1></b>
+        </nav>
+    </header>
+    <div class="login">
+        <div class="box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()">LOGIN</button>
+                <button type="button" class="toggle-btn" onclick="register()">REGISTER</button>
+            </div>
+            <div class="icons">
+                <i class="fa-brands fa-facebook" aria-label="Facebook"></i>
+                <i class="fa-brands fa-twitter" aria-label="Twitter"></i>
+                <i class="fa-brands fa-google" aria-label="Google"></i>
+            </div>
+            <form id="login" class="input-grp">
+                <h3>Welcome Back</h3>
+                <label for="email"></label>
+                <input type="email" id="email" class="input-field" placeholder="Email" required>
+                
+                <label for="password"></label>
+                <input type="password" id="password" class="input-field" placeholder="PASSWORD" required>
+                <input type="checkbox" id="show-password" class="check-box"><span>Show Password</span>
+        
+                <button type="submit" class="submit-btn">LOGIN</button>
+            </form>
+            <form id="register" class="input-grp">
+                <h3>Welcome</h3>
+                <label for="user-id"></label>
+                <input type="text" id="user-id" class="input-field" placeholder="User Id" required>
+                
+                <label for="register-email"></label>
+                <input type="email" id="register-email" class="input-field" placeholder="Email Id" required>
+                
+                <label for="register-password"></label>
+                <input type="password" id="register-password" class="input-field" placeholder="Enter Password" required>
+                <input type="checkbox" id="agree" class="check-box"><span>I agree to the terms and conditions</span>
+                
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+        </div>
+    </div>
+
+  
+    <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        var z = document.getElementById("btn");
+
+        function login() {
+            x.style.left = "50px"; // Position the login form
+            y.style.left = "450px"; // Position the register form off-screen
+            z.style.left = "0"; // Move the toggle button to the login position
+        }
+
+        function register() {
+            x.style.left = "-400px"; // Move the login form off-screen
+            y.style.left = "50px"; // Position the register form
+            z.style.left = "110px"; // Move the toggle button to the register position
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload and Manage Certificates</title>
+    <link rel="stylesheet" href="display.css">
+</head>
+<body>
+    <header>
+        <nav>
+                    <div class="logo">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90">
+                    </div>
+                    <ul class="items">
+                        <li><a href="fhomepage.html">Academics</a></li>
+                        <li><a href="services.html" target="_blank">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                    <div class="profile-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" alt="Profile Icon" width="50" height="50">
+                        <div class="profile-dropdown">
+                            <!--<p><strong>Profile</strong></p>!-->
+                            <p><a href="#profile-settings">Profile</a></p>
+                            <p><a href="#rank-settings">Rank</a></p>
+                            <p><a href="#privacy-settings">Privacy</a></p>
+                            <p><a href="#settings">Settings</a></p>
+                            <p><strong><a href="#logout">Logout</a></strong></p>
+                        </div>
+                    </div>
+    
+          <!-- Navigation content as before -->
+        </nav>
+      </header>
+    <section class="upload-section">
+        <h1>Upload Certificate</h1>
+        <form id="uploadForm">
+            <input type="text" id="title" placeholder="Certificate Title" required>
+            <input type="date" id="date" required>
+            <input type="file" id="image" accept="image/*" required>
+            <button type="submit" class="upload-btn">Upload Certificate</button>
+        </form>
+    </section>
+
+    <section class="display-section">
+        <h1>Uploaded Certificates</h1>
+        <div id="certificates" class="certificates-list"></div>
+    </section>
+
+    <script src="display.js"></script>
+</body>
+</html>

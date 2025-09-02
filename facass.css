@@ -1,0 +1,287 @@
+/* Basic body styling */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f9;
+    margin: 0;
+}
+
+/* Header and navigation */
+header {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #007ACC;
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    width: 90%; /* Adjust width to control spacing on both ends */
+    max-width: 1200px; /* Optional: Limit width for larger screens */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    display: block;
+    width: 90px;
+    height: 90px;
+}
+
+/* Navigation items */
+.items {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.items li {
+    margin: 0 25px;
+}
+
+.items a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.items a:hover {
+    color: #e2e6ea;
+}
+
+
+/* Centering the button container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.toggle-btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color:#007ACC;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Assignment Section Styling */
+#assignment-section, #quiz-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Centering image in assignment section */
+.assignment-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Styling and centering the textarea */
+textarea {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Centering the upload section */
+.upload-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.upload-section input[type="file"] {
+    display: none;
+}
+
+.upload-section label {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: #007ACC;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Centering the submit button */
+.submit-btn, .close-btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007ACC;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Quiz Section Scoreboard styling */
+.scoreboard {
+    text-align: center;
+    padding: 20px;
+    background-color: #e0f7fa;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    height: auto;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.hidden-section {
+    display: none;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    color: white;
+    background-color: #5C6BC0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3949AB;
+}
+.button-container2{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.add-question-section, .edit-question-section {
+    background-color: #bbdefb;
+    border: 1px solid #90CAF9;
+    padding: 20px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+textarea, .choice-input, .edit-choice-input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #90CAF9;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.submit-button {
+    display: flex;
+    width: 90px;
+    padding: 10px;
+    background-color: #5C6BC0;
+    color: white;
+    border: none;
+    align-self: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-button:hover {
+    background-color: #3949AB;
+}
+
+#editQuestionsList > div {
+    background-color: #f1f8e9;
+    border: 1px solid #aed581;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+}
+
+#editQuestionsList button {
+    padding: 5px 10px;
+    margin: 5px 5px 5px 0;
+    color: white;
+    background-color: #ff5722;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#editQuestionsList button:hover {
+    background-color: #e64a19;
+}
+
+/* Disabled button style */
+button:disabled {
+    background-color: #dcdcdc;
+    cursor: not-allowed;
+}

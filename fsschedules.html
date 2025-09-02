@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Dashboard - Class Timings">
+    <meta name="keywords" content="class timings, student, education">
+    <title>Student Dashboard - Class Timings</title>
+    <style>
+      header
+      {
+      background-color: skyblue; /* Blue background for header */
+      color: white;
+      padding: 10px 20px;
+    }
+
+  nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+  }
+
+  .logo img {
+      width: 90px;
+  }
+
+  .items {
+      list-style: none;
+      display: flex;
+  }
+
+  .items li {
+      margin: 0 25px;
+  }
+
+  .items a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+  }
+
+  .items a:hover {
+      color: #e2e6ea; /* Lighter color on hover */
+  }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .timings-section {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .timings-section h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .timing-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .timing-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .timing-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+  <header>
+        <nav>
+            <div class="logo">
+              <a href="fhomepage.html">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90"></a>
+            </div>
+            <ul class="items">
+                <li><a href="fhomepage.php">Academics</a></li>
+                <li><a href="services.html" target="_blank">Services</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="timings-section">
+        <h2>Scheduled Classes<h2>
+
+        <!-- Display timings -->
+        <ul id="timing-list" class="timing-list">
+            <!-- Timings will be dynamically populated here -->
+        </ul>
+    </section>
+
+    <script>
+        // Function to load schedules from localStorage and display them
+        function loadSchedules() {
+            const schedules = JSON.parse(localStorage.getItem('schedules')) || [];
+            const timingList = document.getElementById('timing-list');
+            timingList.innerHTML = ''; // Clear existing list
+
+            // Display each schedule
+            schedules.forEach(schedule => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${schedule.teacher}</strong> - <span>${schedule.date} - ${schedule.time}</span>`;
+                timingList.appendChild(li);
+            });
+        }
+
+        // Load schedules when the page loads
+        document.addEventListener('DOMContentLoaded', loadSchedules);
+    </script>
+</body>
+</html>

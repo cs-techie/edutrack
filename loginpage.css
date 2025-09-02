@@ -1,0 +1,279 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.logo{
+    padding:5px; 
+}
+nav{
+    background-color: rgb(26, 184, 192);
+    display: flex;
+    height: 110px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 27px;
+    text-align: center;
+    align-items: center;
+}
+.items{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 10px;
+    padding:5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+}
+.academics
+{
+    margin-left: 500px;
+    padding-right: 25px;
+}
+.services{
+    padding-right:  25px; 
+}
+li{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  
+    text-decoration: none;
+    list-style: none;
+
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+.slider{
+    height: 450px;
+    background-color: grey;
+    width: 100%;
+    margin-top: 15px;
+}
+.notification{
+    background-color: black;
+    color: white;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+
+}
+.container{
+    border-radius: 25px;
+    font-size: 20px;
+    width: 1150px;
+    height: 580px;
+    margin-left: 80px;
+    padding: 45px 30px;
+    border:2px solid black;
+    margin-top:50px;
+
+}
+.items{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    padding:0px 18px;
+}
+.items li{
+    display: flex;
+    text-decoration: none;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 20px;
+    font-size: 25px;
+
+}
+.items a{
+    text-decoration: none;
+    color: white;
+}
+
+/*collection**/
+.collection{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* background-color: #e2e7e6; */
+}
+.box{
+    /*border: 2px solid black;**/
+    height: 250px;
+    width: 330px;
+    background-color: white;
+    padding: 30px 0px 15px;
+    margin-top: 15px;
+
+}
+.boximg{
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding:20px;
+
+}
+
+/* #id1{
+    height: 300px;
+    background-size: 50cm;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+} */
+.boxcontent{
+    padding:10px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: grey;
+}
+.boxcontent p{
+    color: #007185;
+}
+.boximg:hover{
+    border: 2px solid purple;
+    border-radius:50px;
+}
+.bbg
+{
+    background-color: grey;
+}
+.foot{
+    background-color: grey;
+    color: black;
+    height: 120px;
+    width: 100%;
+
+}
+.left{
+  display:flex;
+  justify-content:left;
+  align-items:column;
+}
+
+.login {
+    height: 100%;
+    width: 100%;
+    background-color: #F8EFE0; 
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.box {
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background: #FFFFFF;
+    padding: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Added shadow for better visibility */
+    border-radius: 10px; /* Rounded edges for a more modern look */
+    overflow: hidden;
+}
+
+.button-box {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #ff61241f;
+    border-radius: 30px;
+}
+
+.toggle-btn {
+    padding: 10px 24px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+
+#btn {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, rgb(43, 180, 226), yellow);
+    border-radius: 30px;
+    transition: 0.5s; /* Reduced transition time */
+}
+
+.icons {
+    margin: 30px auto;
+    text-align: center;
+}
+
+.icons i {
+    font-size: 30px; /* Adjusted font size for icons */
+    margin: 0 10px; /* Added spacing between icons */
+    cursor: pointer;
+}
+
+.input-grp {
+    top: 180px;
+    position: absolute;
+    width: 280px;
+    transition: 0.5s;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border: none; /* Removed all borders */
+    border-bottom: 1px solid #999; /* Only bottom border */
+    outline: none;
+    background: transparent;
+}
+
+.submit-btn {
+    width: 120px; /* Adjusted width for better button appearance */
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, rgb(10, 148, 79), lightblue);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    transition: background-color 0.3s ease; /* Added transition for hover effect */
+}
+
+.submit-btn:hover {
+    background-color: #0a944f; /* Darken button on hover */
+}
+
+.check-box {
+    margin: 20px 10px 30px 0;
+}
+
+span {
+    color: #777;
+    font-size: 12px;
+    position: absolute;
+    bottom: 68px;
+}
+
+h3 {
+    text-align: center;
+}
+
+#login {
+    left: 50px;
+}
+
+#register {
+    left: 450px; /* Added to move the register form off-screen by default */
+}
+
+h1{
+  justify-content:center;
+  align-items:center;
+}

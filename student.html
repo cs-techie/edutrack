@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTrack Assignment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxPu63BIngm-TO1GIP0t1ONL8tj0Cv08OYZA&s" alt="EduTrack Logo" width="90" height="90">
+            </div>
+            <ul class="items">
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="services.html" target="_blank">Services</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="assignment-section">
+        <h2>Assignment</h2>
+        <textarea rows="5" cols="40" placeholder="Write your assignment here..."></textarea>
+        <div class="upload-section">
+            <input type="file" id="fileUpload" name="file">
+            <label for="fileUpload">Upload from device</label>
+        </div>
+        <button class="submit-btn" onclick="submitAssignment()">Submit Assignment</button>
+        <button class="close-btn" onclick="closeSection('assignment-section')">Close</button>
+    </section>
+
+    <section id="uploaded-files-section">
+        <h3>Uploaded Assignments:</h3>
+        <ul id="uploadedFilesList">
+            <!-- List of uploaded files will appear here -->
+        </ul>
+    </section>
+
+    <script>
+        // Submit assignment file to server
+        function submitAssignment() {
+            const fileInput = document.getElementById('fileUpload');
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Send file to backend (PHP)
+            fetch('uploadAssignment.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('File uploaded successfully');
+                    loadUploadedFiles(); // Reload the list of uploaded files
+                } else {
+                    alert('File upload failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Load the list of uploaded files from the server
+        function loadUploadedFiles() {
+            fetch('getUploadedFiles.php')
+                .then(response => response.json())
+                .then(data => {
+                    const fileList = document.getElementById('uploadedFilesList');
+                    fileList.innerHTML = ''; // Clear the list
+                    data.files.forEach(file => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = file;
+                        fileList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error loading files:', error));
+        }
+
+        // Call loadUploadedFiles on page load to show current files
+        window.onload = loadUploadedFiles;
+    </script>
+</body>
+</html>
