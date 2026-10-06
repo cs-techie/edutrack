@@ -1,68 +1,106 @@
-EduTrack 🎓
+# EduTrack PRO 🎓
 
-EduTrack is an interactive web-based learning platform designed to enhance student engagement and mentor-student collaboration through assignments, quizzes, and progress tracking. The platform creates a gamified and personalized learning experience that makes education more engaging, interactive, and rewarding.
+EduTrack PRO is a state-of-the-art, interactive Academic & Learning Management System designed to bridge the gap between students, faculty, and administrators. Built with a premium "Neo-Glassmorphism" design system, it provides a gamified, highly engaging personalized learning experience. 
 
-🚀 Features
-👨‍🏫 Mentor Side
+The platform supports analytics-driven dashboards, real-time assignment tracking, attendance monitoring, and centralized student profile management (integrating external developer profiles like GitHub and LeetCode).
 
-Upload assignments (with images/documents).
+---
 
-Create and manage quizzes.
+## 🛠 Tech Stack & Architecture
 
-Monitor student submissions and performance.
+This project is built using the **MERN** stack (MongoDB, Express, React, Node.js) with a modern tooling ecosystem.
 
-Provide feedback on assignments.
+### Frontend (Client)
+- **Framework:** React 18 powered by Vite (`create-vite`)
+- **Styling:** Tailwind CSS (Custom Neo-Glassmorphism design system)
+- **State Management & Data Fetching:** React Context API, Axios
+- **Routing:** React Router DOM (v6)
+- **Visuals & Charts:** `lucide-react` for iconography, `recharts` for complex analytics (Radar & Area charts)
+- **Animations:** `framer-motion` for page transitions, custom Tailwind keyframes (blobs, pulses)
 
-Real-time updates for students.
+### Backend (Server)
+- **Framework:** Node.js with Express.js
+- **Database:** MongoDB via Mongoose ODM. *(Note: Includes an automatic fallback to `mongodb-memory-server` if a local instance on port 27017 is unavailable).*
+- **Authentication:** Stateful Session-based Auth via `express-session` (MemoryStore) and `bcryptjs` for secure password hashing.
+- **File Handling:** Local static uploads folder (`/uploads`) for assignment attachments.
+- **API Structure:** RESTful API with route modularization (`/api/auth`, `/api/dashboard`, `/api/profile`, etc.)
 
-👨‍🎓 Student Side
+---
 
-Access and attempt quizzes posted by mentors.
+## 🏗 Project Structure
 
-View, solve, and submit assignments.
+The repository is organized into a monorepo-style structure separating client and server logic.
 
-Upload solutions directly from the device.
+```
+Edutrack/
+├── client/                     # React Frontend Application
+│   ├── public/                 # Static assets
+│   ├── src/
+│   │   ├── components/         # Reusable UI components (HeaderNav, Footer, PageWrapper, ProtectedRoute)
+│   │   ├── context/            # Global React Contexts (AuthContext, ThemeContext)
+│   │   ├── pages/              # Route-level components (Dashboards, LoginHub, StudentProfile, etc.)
+│   │   ├── index.css           # Global stylesheets & custom Tailwind @layer utilities (Glassmorphism)
+│   │   ├── index.html          # HTML entry point (Injects Inter & Outfit fonts)
+│   │   └── App.jsx             # Main Application routing and layout manager
+│   ├── tailwind.config.js      # Tailwind configuration (Brand colors, Animations)
+│   └── vite.config.js          # Vite config (Includes proxy for /api -> localhost:5000)
+│
+└── server/                     # Node.js/Express Backend Application
+    ├── config/                 # Database connection logic (`db.js` with fallback logic)
+    ├── middleware/             # Express middlewares (`auth.js` for role-based access control)
+    ├── models/                 # Mongoose Data Schemas (User, Assignment, Attendance, Result, Submission)
+    ├── routes/                 # Express Router definitions
+    ├── uploads/                # Directory for locally uploaded assignment files
+    ├── .env                    # Environment variables (PORT, MONGO_URI, SESSION_SECRET)
+    └── server.js               # Entry point for backend server (Express app setup)
+```
 
-Scoreboard with details:
+---
 
-Questions attempted
+## 🚀 Setup & Installation
 
-Not attempted
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (Optional for local dev, highly recommended for production)
 
-Correct answers
+### 1. Backend Setup
+```bash
+cd server
+npm install
+npm start
+```
+*The server will start on port `5000`. If it cannot connect to MongoDB locally, it will automatically spin up an in-memory mock database and seed it with initial demo data (e.g., student1 / password123).*
 
-Final score
+### 2. Frontend Setup
+```bash
+cd client
+npm install
+npm run dev
+```
+*The React app will run on port `5173` and proxy API requests to the backend.*
 
-🎯 Key Highlights
+---
 
-Interactive Design: Clean, student-friendly, and engaging UI.
+## 📋 Manual Action Items & Next Steps
 
-Gamification Elements: Scoreboards and performance tracking.
+To take this project from a local development state to a fully production-ready, real-world application, a human developer (or AI assistant) must execute the following manual steps:
 
-Personalized Learning: Feedback and suggestions from mentors.
+1. **Connect a Persistent Database:**
+   - Currently, the backend falls back to an in-memory database if MongoDB is not running locally.
+   - **Action:** Create a MongoDB Atlas cluster, obtain the connection string, and create a `.env` file in the `server/` directory containing `MONGO_URI=mongodb+srv://...`
+   - **Action:** Remove the `mongodb-memory-server` fallback logic in `server/config/db.js` once in production.
 
-Real-Time Updates: Mentor updates (assignment/quiz) instantly appear for students.
+2. **Upgrade Authentication Mechanism:**
+   - The app currently uses `express-session` with the default in-memory store. This will leak memory in production and clear sessions on every server restart.
+   - **Action:** Implement `connect-mongo` to persist sessions in the MongoDB database, OR refactor the backend to use stateless **JWT (JSON Web Tokens)** stored in HttpOnly cookies.
 
-Full-Width Assignment View: Students can write directly on assignment images or upload solutions.
+3. **Migrate File Uploads to Cloud Storage:**
+   - Assignment files are currently saved locally to the `server/uploads/` directory.
+   - **Action:** Integrate an AWS S3 bucket (or Cloudinary/Firebase Storage) using `multer-s3` so uploaded files are stored reliably in the cloud instead of the local filesystem.
 
-🛠️ Tech Stack
+4. **Environment Variables Security:**
+   - Ensure you replace fallback hardcoded secrets (like `SESSION_SECRET` in `server.js`) with strong, unique strings inside a secure `.env` file before deploying.
 
-Frontend: HTML, CSS, JavaScript
-
-Backend: PHP (with XAMPP/WAMP server)
-
-Database: MySQL
-
-Other Tools:
-
-Git & GitHub (Version Control)
-
-Bootstrap / TailwindCSS (Styling)
-
-📂 Project Structure
-EduTrack/
-├── frontend/       # HTML, CSS, JS files
-├── backend/        # PHP scripts (login, assignment, quiz, APIs)
-├── database/       # MySQL schema and SQL scripts
-├── assets/         # Images, icons, etc.
-└── README.md       # Project documentation
+5. **Deployment Configuration:**
+   - Configure a build pipeline. The frontend should be built (`npm run build`) and served either via a CDN (like Vercel/Netlify) or statically served by the Express backend.
+   - Update CORS origins in `server/server.js` to point to the actual production domain rather than `localhost:5173`.
